@@ -1,0 +1,74 @@
+###############################
+# Author: Samuel Couto
+# Created: 15.08.2026
+# Modfied: 15.08.2026
+# Desc: Alacritty visual config
+###############################
+
+# ---
+# Management config
+# ---
+
+[scrolling]
+history = 10000
+
+[selection]
+save_to_clipboard = true
+
+[mouse]
+hide_when_typing = true
+
+# ---
+# Visual config
+# ---
+
+# Theme (Tokyo Night Storm)
+[colors.primary]
+background = "#24283b"
+foreground = "#c0caf5"
+
+[colors.cursor]
+text = "#24283b"
+cursor = "#c0caf5"
+
+[colors.selection]
+text = "CellForeground"
+background = "#364A82"
+
+[colors.normal]
+black   = "#1D202F"
+red     = "#f7768e"
+green   = "#9ece6a"
+yellow  = "#e0af68"
+blue    = "#7aa2f7"
+magenta = "#bb9af7"
+cyan    = "#7dcfff"
+white   = "#c0caf5"
+
+[colors.bright]
+black   = "#414868"
+red     = "#ff899d"
+green   = "#9fe044"
+yellow  = "#faba4a"
+blue    = "#8db0ff"
+magenta = "#c7a9ff"
+cyan    = "#a4daff"
+white   = "#d5d6db"
+
+# Cursor
+[cursor]
+style = { shape = "Block", blinking = "On" }
+
+# Fonts
+[font]
+normal = { family = "SauceCodeProNerdFontMono", style = "Regular" }
+size = 12
+
+# Window
+[window]
+opacity = 0.85
+padding = { x = 10, y = 10 }
+decorations = "None"
+# decorations = "Full"
+dimensions = { columns = 150, lines = 42 }
+# startup_mode = "Windowed"
