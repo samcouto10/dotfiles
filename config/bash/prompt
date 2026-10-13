@@ -1,0 +1,75 @@
+#!/usr/bin/env bash
+
+# -------------------------------------
+# Author: Samuel Couto
+# Creation: 24.07.2026
+# Modified: 24.07.2026
+# Desc.: Color configuration for .basrc
+# -------------------------------------
+
+prompt_user() {
+  printf "%s %s" "$ICON_USER" "$USER"
+}
+
+prompt_host() {
+  printf "%s %s" "$ICON_HOST" "$HOSTNAME"
+}
+
+prompt_directory() {
+  local directory
+
+  if [[ "$PWD" == "$HOME" ]]; then
+    directory="~"
+  else
+    directory="$(basename "$PWD")"
+  fi
+
+  printf "%s %s" \
+    "$ICON_FOLDER" \
+    "$directory"
+}
+
+prompt_git() {
+  local branch
+
+  branch=$(git branch --show-current 2>/dev/null)
+  [[ -n "$branch" ]] &&
+    printf "%s %s" \
+      "$ICON_GIT" \
+      "$branch"
+}
+
+prompt_time() {
+  printf "%s %s" "$ICON_CLOCK" "$(date +%H:%M)"
+}
+
+segment() {
+  local background="$1"
+  local foreground="$2"
+  local text="$3"
+
+  printf "\[\e[48;5;%sm\]" "$background"
+  printf "\[\e[38;5;%sm\]" "$foreground"
+  printf " %s " "$text"
+  printf "\[\e[0m\]"
+}
+
+render_line1() {
+  printf "%s" "$(prompt_user)"
+  printf " | "
+  printf "%s" "$(prompt_directory)"
+
+  local git
+
+  git="$(prompt_git)"
+  [[ -n "$git" ]] && {
+    printf " | "
+    printf "%s" "$git"
+  }
+}
+
+build_prompt() {
+  PS1='$(render_line1)\n❯ '
+}
+
+PROMPT_COMMAND=build_prompt

@@ -1,0 +1,38 @@
+# ~/.bashrc
+
+# --------------------------------------
+# Author: Samuel Couto
+# Creation: 22.07.2026
+# Modified: 24.07.2026
+# Desc.: Main .bashrc file configuration
+# --------------------------------------
+
+# ---
+# Path Constants
+# ---
+DOTFILES="$HOME/Documents/3.Resources/.dotfiles"
+CONFIG="$DOTFILES/config"
+BASH_CONFIG="$CONFIG/bash"
+THEME_CONFIG="$CONFIG/theme"
+NEOVIM="/opt/nvim-linux-x86_64/bin"
+
+# ---
+# Sourcing
+# ---
+
+# Config files
+source "$BASH_CONFIG/aliases"
+source "$BASH_CONFIG/exports"
+source "$BASH_CONFIG/functions"
+source "$BASH_CONFIG/history"
+source "$BASH_CONFIG/prompt"
+
+# Theme files
+source "$BASH_CONFIG/colors"
+source "$THEME_CONFIG/icons.sh"
+source "$THEME_CONFIG/palette.sh"
+
+# ---
+# PATH config
+# ---
+export PATH="$PATH:$NEOVIM"
